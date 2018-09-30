@@ -1,0 +1,11 @@
+<mz-modal [fixedFooter]="true" [options]="options">
+  <mz-modal-header>
+    <h4>{{title}}</h4>
+  </mz-modal-header>
+  <mz-modal-content>
+    {{content}}
+  </mz-modal-content>
+  <mz-modal-footer>
+    <button *ngFor="let btn of buttons" mz-button [flat]="true" mz-modal-close>{{btn}}</button>
+  </mz-modal-footer>
+</mz-modal>

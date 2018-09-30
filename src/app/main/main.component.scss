@@ -1,0 +1,17 @@
+@import '~src/styles/styles.scss';
+
+h2 {
+  border-bottom: 1px solid $BCBlue;
+}
+footer {
+  background-color: $BCBlue;
+  color: white;
+}
+
+.copyright {
+  align-content: center;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin: 4ex 0 0 0;
+}
