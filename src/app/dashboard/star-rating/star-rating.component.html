@@ -1,0 +1,31 @@
+<div [ngSwitch]="style" class="star-enclosure">
+    <ng-container *ngSwitchCase="'stars'">
+        <ng-template #emptyStar>
+            <i class="material-icons">star_border</i>
+        </ng-template>
+        <ng-template #halfStar>
+            <i class="material-icons">star_half</i>
+        </ng-template>
+
+        <span class="large-bracket">[</span>
+        <ng-container *ngIf="ratings.average > 0; else emptyStar">
+            <i *ngIf="ratings.average >= 1; else halfStar" class="material-icons">star</i>
+        </ng-container>
+        <ng-container *ngIf="ratings.average > 1; else emptyStar">
+            <i *ngIf="ratings.average >= 2; else halfStar" class="material-icons">star</i>
+        </ng-container>
+        <ng-container *ngIf="ratings.average > 2; else emptyStar">
+            <i *ngIf="ratings.average >= 3; else halfStar" class="material-icons">star</i>
+        </ng-container>
+        <ng-container *ngIf="ratings.average > 3; else emptyStar">
+            <i *ngIf="ratings.average >= 4; else halfStar" class="material-icons">star</i>
+        </ng-container>
+        <ng-container *ngIf="ratings.average > 4; else emptyStar">
+            <i *ngIf="ratings.average >= 5; else halfStar" class="material-icons">star</i>
+        </ng-container>
+        <span class="average-rating">{{ratings.average.toFixed(2)}}</span>
+        <span class="large-bracket">]</span>
+    </ng-container>
+    <ng-container *ngSwitchCase="'graph'"></ng-container>
+    <ng-container *ngSwitchCase="'both'"></ng-container>
+</div>

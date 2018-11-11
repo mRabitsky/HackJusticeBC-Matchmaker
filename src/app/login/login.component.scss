@@ -1,0 +1,31 @@
+@import '~src/styles/styles.scss';
+
+aside.card-panel {
+  border-left: 2px solid $BCYellow;
+  position: relative;
+
+  a {
+    color: $BCBlue;
+    position: absolute;
+    top: 2px;
+    right: 6px;
+  }
+  a:hover {
+    cursor: pointer;
+    color: darken($BCBlue, 10%);
+    transition: color 300ms;
+  }
+}
+div.container {
+  align-items: start;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+
+  .row {
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+  }
+}

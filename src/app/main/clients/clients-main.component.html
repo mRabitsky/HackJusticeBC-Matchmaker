@@ -1,61 +1,64 @@
-<main class="container">
+<form class="container" [formGroup]="searchForm" (ngSubmit)="search()">
   <h2 i18n="clients">Clients</h2>
-  <h4 i18n>Need legal help? We can find you a legal professional to speak with you.</h4>
-  <br/>
+  <h4 i18n>Need legal help? We can find you a legal professional to speak with you, and it's as simple as filling out these three fields:</h4>
   <div class="row pad-bot">
-    <div class="input-field col s12 m4">
-      <select>
-        <option value="AB">Alberta</option>
-        <option value="BC">British Columbia</option>
-        <option value="MB">Manitoba</option>
-        <option value="NB">New Brunswick</option>
-        <option value="NL">Newfoundland and Labrador</option>
-        <option value="NS">Nova Scotia</option>
-        <option value="ON">Ontario</option>
-        <option value="PE">Prince Edward Island</option>
-        <option value="QC">Quebec</option>
-        <option value="SK">Saskatchewan</option>
-        <option value="NT">Northwest Territories</option>
-        <option value="NU">Nunavut</option>
-        <option value="YT">Yukon</option>
-      </select>
-      <label>Province</label>
+    <div class="input-field col s12 m4 dropdown-sigil">
+      <label>Province
+        <select formControlName="province">
+          <option value="ca_AB">Alberta</option>
+          <option value="ca_BC">British Columbia</option>
+          <option value="ca_MB">Manitoba</option>
+          <option value="ca_NB">New Brunswick</option>
+          <option value="ca_NL">Newfoundland and Labrador</option>
+          <option value="ca_NS">Nova Scotia</option>
+          <option value="ca_ON">Ontario</option>
+          <option value="ca_PE">Prince Edward Island</option>
+          <option value="ca_QC">Quebec</option>
+          <option value="ca_SK">Saskatchewan</option>
+          <option value="ca_NT">Northwest Territories</option>
+          <option value="ca_NU">Nunavut</option>
+          <option value="ca_YT">Yukon</option>
+        </select>
+      </label>
     </div>
-    <div class="input-field col s12 m4">
-      <select>
-        <option value="">Admiralty (Maritime)</option>
-        <option value="">Bankruptcy</option>
-        <option value="">Business (Corporate)</option>
-        <option value="">Civil Rights</option>
-        <option value="">Criminal</option>
-        <option value="">Entertainment</option>
-        <option value="">Environmental</option>
-        <option value="">Family</option>
-        <option value="">Health</option>
-        <option value="">Immigration</option>
-        <option value="">Intellectual Property</option>
-        <option value="">International</option>
-        <option value="">Labor (Employment)</option>
-        <option value="">Military</option>
-        <option value="">Personal Injury</option>
-        <option value="">Real Estate</option>
-        <option value="">Tax</option>
-      </select>
-      <label>Area of Law</label>
+    <div class="input-field col s12 m4 dropdown-sigil">
+      <label>Area of Law
+        <select formControlName="areaOfLaw">
+          <option value="admiralty">Admiralty (Maritime)</option>
+          <option value="bankruptcy">Bankruptcy</option>
+          <option value="corporate">Business (Corporate)</option>
+          <option value="civil_rights">Civil Rights</option>
+          <option value="criminal">Criminal</option>
+          <option value="entertainment">Entertainment</option>
+          <option value="environmental">Environmental</option>
+          <option value="family">Family</option>
+          <option value="health">Health</option>
+          <option value="immigration">Immigration</option>
+          <option value="ip">Intellectual Property</option>
+          <option value="intl">International</option>
+          <option value="labour">Labor (Employment)</option>
+          <option value="military">Military</option>
+          <option value="personal_injury">Personal Injury</option>
+          <option value="real_estate">Real Estate</option>
+          <option value="tax">Tax</option>
+          <option value="other">Other / Not Sure</option>
+        </select>
+      </label>
     </div>
-    <div class="input-field col s12 m4">
-      <mz-switch-container class="flex-center">
-        <input mz-switch
-               id="local-remote-switch"
-          [off]="'Local'"
-          [on]="'Remote'"
-               type="checkbox">
-      </mz-switch-container>
+    <div class="input-field col s12 m4 flex-center">
+      <div class="switch flex-center">
+        <label>
+          Local
+          <input type="checkbox" formControlName="remote">
+          <span class="lever"></span>
+          Remote
+        </label>
+      </div>
     </div>
   </div>
   <div class="row">
-    <div class="col s12 m2 offset-m5">
-      <a [routerLink]="'/dashboard'" mz-button [large]="true" i18n="search">Search</a>
+    <div class="col s12 m2 offset-m5 flex-center">
+      <button class="waves-effect waves-light btn-large" type="submit">Search</button>
     </div>
   </div>
-</main>
+</form>

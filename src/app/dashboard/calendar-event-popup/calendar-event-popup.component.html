@@ -1,0 +1,22 @@
+<div id="calendar-event-modal" class="modal modal-fixed-footer">
+    <div *ngIf="calendarEvent" class="modal-content">
+        <header class="row">
+            <h3>{{calendarEvent.start | date:'MMM d, y @ H:mm'}}</h3>
+            <span *ngIf="calendarEvent.meta.remote" class="new badge tooltipped" data-badge-caption="" data-position="top">Remote</span>
+        </header>
+        <hr/>
+        <section class="row">
+            <div class="col s12 m2 img-wrapper hide-on-small-and-down">
+                <img [src]="calendarEvent.meta.lawyer.avatar" alt="Profile picture" class="circle hoverable responsive-img z-depth-2">
+            </div>
+            <div class="col s12 m6 lawyerName">
+                <h3>{{calendarEvent.meta.lawyer.name}}</h3>
+            </div>
+            <star-rating class="col s12 m4" [ratings]="calendarEvent.meta.lawyer.ratings"></star-rating>
+        </section>
+    </div>
+    <div class="modal-footer">
+        <button class="modal-close waves-effect waves-bc-yellow btn-flat">CLOSE</button>
+        <button class="modal-close waves-effect waves-bc-yellow btn-flat" (click)="bookThisAppointment()">BOOK</button>
+    </div>
+</div>

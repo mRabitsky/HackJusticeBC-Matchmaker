@@ -2,4 +2,7 @@ $BCBlue: #002680;
 $BCYellow: #ffd800;
 
 $primary-color: $BCBlue;
-$secondary-color: $BCYellow;
+$secondary-color: $BCBlue;
+
+$tabs-underline-color: lighten($BCYellow, 15%);
+$switch-bg-color: $BCYellow;

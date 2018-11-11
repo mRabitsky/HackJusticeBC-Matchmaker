@@ -1,0 +1,36 @@
+@import '~src/styles/styles.scss';
+
+:host {
+  align-items: center;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  z-index: -1;
+}
+
+h3 { margin: 0; }
+hr { margin-bottom: 20px; }
+
+.modal {
+  top: 0 !important;
+  position: relative !important;
+}
+.row {
+  display: flex;
+  align-items: center;
+}
+.tooltipped {
+  cursor: help;
+}
+
+@media #{$small-and-down} {
+  section.row {
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,17 @@
+@import '~src/styles/styles.scss';
+
+nav {
+  background-color: rgba(0,0,0,0);
+  color: #fff !important;
+  transition: all 450ms;
+
+  .brand-logo, ul li a {
+    color: #fff;
+  }
+}
+nav.scrolled {
+  background-color: $BCBlue;
+  * {
+    color: #fff;
+  }
+}

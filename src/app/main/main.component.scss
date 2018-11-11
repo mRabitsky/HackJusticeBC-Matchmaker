@@ -1,13 +1,56 @@
 @import '~src/styles/styles.scss';
 
-h2 {
-  border-bottom: 1px solid $BCBlue;
-}
 footer {
   background-color: $BCBlue;
   color: white;
+  padding: 7.5vh 5.5vw;
+  width: 100%;
+}
+main-hero {
+  align-items: center;
+  background: url('../../assets/bc-main-background.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  box-shadow: inset 0px 32px 64px -32px rgba(0,0,0,0.67);
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+  padding: 64px 0 0 0;
+  margin: 0;
+  width: 100%;
+
+  h1 {
+    color: whitesmoke;
+    font-family: 'Montserrat', 'Lato', sans-serif;
+    font-weight: 500;
+    margin: 15vh 0 20vh 0;
+  }
+}
+section {
+  width: 100%;
+  padding: 2.5% 5%;
+
+  h2 {
+    border-bottom: 1px solid $BCBlue;
+  }
 }
 
+.brand-logo {
+  left: 16px;
+  text-align: center;
+}
+.buttons {
+  align-items: center;
+  display: flex;
+  justify-content: space-around;
+
+  a[mz-button] {
+    background-color: $BCBlue;
+  }
+}
 .copyright {
   align-content: center;
   align-items: center;

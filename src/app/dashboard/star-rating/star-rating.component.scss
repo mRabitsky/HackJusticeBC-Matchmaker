@@ -1,0 +1,21 @@
+@import '~src/styles/styles.scss';
+
+i.material-icons {
+  color: $BCYellow;
+}
+span {
+  color: $BCYellow;
+}
+
+.average-rating {
+  font-size: 22px;
+  line-height: 36px;
+  margin-left: 4px;
+}
+.large-bracket {
+  font-size: 2rem;
+}
+.star-enclosure {
+  display: flex;
+  align-items: center;
+}

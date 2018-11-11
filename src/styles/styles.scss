@@ -1,8 +1,57 @@
-@import './_variables';
+@import './variables';
+@import './fonts';
+@import '~node_modules/materialize-css/sass/materialize.scss';
+@import '~node_modules/angular-calendar/scss/angular-calendar.scss';
 
-html, body, app-root {
+app-root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+html {
+  font-family: 'Lato', sans-serif;
+  height: 100vh;
   padding: 0;
   margin: 0;
   width: 100%;
 }
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Montserrat', sans-serif;
+}
 
+.equal-column-sizes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.flex-center {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+.input-field label {
+  position: relative;
+}
+.restrict-tooltip {
+  max-width: 240px;
+}
+.sidenav-overlay {
+  z-index: 996;
+}
+/*.switch label input[type="checkbox"]:checked + .lever {
+  background-color: lighten($BCYellow, 22.5%) !important;
+}
+.switch label input[type="checkbox"]:checked + .lever::after {
+  background-color: $BCYellow !important;
+}*/
+
+.waves-effect.waves-bc-yellow .waves-ripple {
+  background-color: rgba($BCYellow, 0.65);
+}
+
+@media #{$small-and-down} {
+  .dropdown-sigil {
+    padding: 0 1.5rem 0 0 !important;
+  }
+}
