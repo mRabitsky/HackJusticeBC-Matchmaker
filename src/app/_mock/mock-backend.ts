@@ -147,11 +147,12 @@ export class MockBackendInterceptor implements HttpInterceptor {
                         },
                         draggable: false,
                         meta: {
-                            price: 0,
+                            price: 20,
                             remote: true,
                             client: null,
                             lawyer: {
                                 avatar: 'https://i.redd.it/4tlipwxnbtdz.jpg',
+                                blurb: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, cupiditate error reprehenderit sapiente tempore voluptatum. Aliquam cumque dignissimos dolorum est illum iure iusto, mollitia nobis quas quis saepe veritatis voluptates?',
                                 practice: {
                                     specialization: 'lawyer',
                                     jurisdiction: ['ca_BC'],
@@ -160,8 +161,8 @@ export class MockBackendInterceptor implements HttpInterceptor {
                                 id: 99,
                                 name: 'Joe Schmoe',
                                 ratings: {
-                                    stars: [0, 0, 0, 0, 1],
-                                    average: 5
+                                    stars: [0, 0, 0, 2, 1],
+                                    average: 4.33
                                 }
                             }
                         }
@@ -180,9 +181,29 @@ export class MockBackendInterceptor implements HttpInterceptor {
                             afterEnd: false,
                         },
                         draggable: false,
-                    } as CalendarEvent,
+                        meta: {
+                            price: 45,
+                            remote: false,
+                            client: null,
+                            lawyer: {
+                                avatar: 'https://i.redd.it/4tlipwxnbtdz.jpg',
+                                blurb: 'Stately, plump Buck Mulligan came from the stairhead, bearing a bowl of lather on which a mirror and a razor lay crossed. A yellow dressinggown, ungirdled, was sustained gently behind him on the mild morning air.',
+                                practice: {
+                                    specialization: 'lawyer',
+                                    jurisdiction: ['ca_BC'],
+                                    expertise: [AreaOfLaw.ENTERTAINMENT]
+                                },
+                                id: 45,
+                                name: 'James Joyce',
+                                ratings: {
+                                    stars: [0, 0, 0, 1, 2],
+                                    average: 4.66
+                                }
+                            }
+                        }
+                    } as CalendarEvent<Appointment>,
                     {
-                        id: 1,
+                        id: 2,
                         start: addDays(today, 2),
                         end: addHours(today, 56),
                         title: 'Event C',
@@ -195,6 +216,26 @@ export class MockBackendInterceptor implements HttpInterceptor {
                             afterEnd: false,
                         },
                         draggable: false,
+                        meta: {
+                            price: 0,
+                            remote: true,
+                            client: null,
+                            lawyer: {
+                                avatar: 'https://i.redd.it/4tlipwxnbtdz.jpg',
+                                blurb: 'Far out in the uncharted backwaters of the unfashionable end of the western spiral arm of the Galaxy lies a small unregarded yellow sun.',
+                                practice: {
+                                    specialization: 'lawyer',
+                                    jurisdiction: ['ca_BC'],
+                                    expertise: [AreaOfLaw.FAMILY]
+                                },
+                                id: 42,
+                                name: 'Douglas Adams',
+                                ratings: {
+                                    stars: [0, 0, 0, 0, 4],
+                                    average: 5
+                                }
+                            }
+                        }
                     } as CalendarEvent,
                 ];
 

@@ -1,5 +1,9 @@
 @import '~src/styles/styles.scss';
 
+blockquote {
+  border-left-color: $BCYellow !important;
+  margin: 20px 0 36px 0 !important;
+}
 footer {
   background-color: $BCBlue;
   color: white;
@@ -36,8 +40,15 @@ section {
   h2 {
     border-bottom: 1px solid $BCBlue;
   }
+  //p.flow-text:last-child { margin-bottom: 0; }
+}
+section:last-of-type {
+  margin-bottom: 2.373333rem;
 }
 
+.blue-underline {
+  text-decoration: blue underline;
+}
 .brand-logo {
   left: 16px;
   text-align: center;

@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from "@angular/core";
+import { ActivatedRoute, Router } from '@angular/router';
 import { CalendarDateFormatter, CalendarEvent, CalendarEventTitleFormatter } from "angular-calendar";
 import {
     endOfDay,
@@ -38,11 +39,12 @@ import { EventTitleDateFormatter } from './event-title-date-formatter';
     public view: string = 'month';
     public viewDate: Date = new Date();
 
-    @ViewChild(CalendarEventPopupComponent) private modal;
+    @ViewChild(CalendarEventPopupComponent) private modal: CalendarEventPopupComponent;
+    private eventsSnapshot: CalendarEvent<Appointment>[] = [];
     private searchCriteria: SearchCriteria;
     private tabsInitialized = false;
 
-    public constructor(private readonly calendarService: CalendarService) {
+    public constructor(private readonly calendarService: CalendarService, private readonly route: ActivatedRoute, private readonly router: Router) {
         this.searchCriteria = StateStore.getState('searchCriteria');
     }
 
@@ -54,7 +56,7 @@ import { EventTitleDateFormatter } from './event-title-date-formatter';
             day: endOfDay(today),
         }[this.view]);
     }
-    public dayClicked({date, events}: { date: Date; events: Array<CalendarEvent<any>>; }): void {
+    public dayClicked({date, events}: { date: Date; events: Array<CalendarEvent<Appointment>>; }): void {
         if(isSameMonth(date, this.viewDate)) {
             if((isSameDay(this.viewDate, date) && this.activeDayIsOpen === true) || events.length === 0){
                 this.activeDayIsOpen = false;
@@ -64,8 +66,10 @@ import { EventTitleDateFormatter } from './event-title-date-formatter';
             }
         }
     }
-    public eventClicked($event: CalendarEvent<any>): void {
-        if(!!this.modal) this.modal.open($event);
+    public eventClicked($event: CalendarEvent<Appointment>): void {
+        if(!!this.modal && !!$event) {
+            this.router.navigate(['dashboard', $event.id]);
+        }
     }
     public fetchEvents(): void {
         const start: Date = {
@@ -81,7 +85,7 @@ import { EventTitleDateFormatter } from './event-title-date-formatter';
 
         this.events$ = this.calendarService.getAvailableAppointments(start, end, this.searchCriteria);
     }
-    public _initTabs() { // UNSAFE: this might be initializing multiple tab instances, not sure;
+    public _initTabs(events: CalendarEvent<Appointment>[]) { // UNSAFE: this might be initializing multiple tab instances, not sure;
         if(!this.tabsInitialized) {
             M.Tabs.init(document.querySelector('.tabs'), { onShow: (el: Element) => this.view = el.id.split('View')[0] });
             this.tabsInitialized = true;
@@ -98,11 +102,27 @@ import { EventTitleDateFormatter } from './event-title-date-formatter';
                 break;
             }
         }
+        this.eventsSnapshot = events;
+
+        const n = StateStore.getState('retryEventPopup');
+        if(n !== null) {
+            StateStore.putState({retryEventPopup: null});
+            this.modal.open(events.find(e => e.id === +n));
+        }
     }
     public ngAfterViewInit(): void {
          M.Sidenav.init(document.querySelectorAll('.sidenav'), {edge: 'right'});
     }
     public ngOnInit(): void {
         this.fetchEvents();
+        this.route.paramMap.subscribe(map => {
+            console.log('events snapshot:', this.eventsSnapshot);
+            if(!!map.get('id')) {
+                const event = this.eventsSnapshot.find(e => e.id === +map.get('id'));
+
+                if(!event) StateStore.putState({retryEventPopup: +map.get('id')});
+                else this.modal.open(event);
+            }
+        });
     }
 }

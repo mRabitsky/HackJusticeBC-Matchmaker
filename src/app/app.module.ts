@@ -26,53 +26,55 @@ import { NavbarComponent } from "./nav/navbar.component";
 import { RegistrationComponent } from "./registration/registration.component";
 
 const routes: Routes = [ // TODO: replace AppComponent with correct components
-  { path: '', component: MainComponent/*, canActivate: [AuthGuard]*/ },
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegistrationComponent },
-  { path: 'clients', component: ClientsMainComponent, data: {title: 'Clients'} },
-  { path: 'lawyers', component: AppComponent, data: {title: 'Lawyers'} },
-  { path: 'dashboard', component: DashboardComponent, data: {title: 'Dashboard'}},
+    { path: '', component: MainComponent/*, canActivate: [AuthGuard]*/ },
+    { path: 'login', component: LoginComponent },
+    { path: 'register', component: RegistrationComponent },
+    { path: 'clients', component: ClientsMainComponent, data: {title: 'Clients'} },
+    { path: 'lawyers', component: AppComponent, data: {title: 'Lawyers'} },
+    { path: 'dashboard', redirectTo: 'dashboard/' },
+    { path: 'dashboard/:id', component: DashboardComponent, data: {title: 'Dashboard'} },
 
-  // otherwise redirect to home
-  { path: '**', redirectTo: '' }
+    // otherwise redirect to home
+    {path: '**', redirectTo: ''}
 ];
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    CalendarEventPopupComponent,
-    ClientsMainComponent,
-    DashboardComponent,
-    LoginComponent,
-    MainComponent,
-    MainHeroComponent,
-    NavbarComponent,
-    RegistrationComponent,
-    StarRatingComponent,
-  ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    CalendarModule.forRoot({
-      provide: DateAdapter,
-      useFactory: adapterFactory
-    }),
-    ReactiveFormsModule,
-    RouterModule.forRoot(routes),
-    HttpClientModule,
-  ],
-  providers: [
-    AuthGuard,
-    AuthenticationService,
-    CalendarService,
-    HttpClient,
-    StateStore,
-    UserService,
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    declarations: [
+        AppComponent,
+        CalendarEventPopupComponent,
+        ClientsMainComponent,
+        DashboardComponent,
+        LoginComponent,
+        MainComponent,
+        MainHeroComponent,
+        NavbarComponent,
+        RegistrationComponent,
+        StarRatingComponent,
+    ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        CalendarModule.forRoot({
+            provide: DateAdapter,
+            useFactory: adapterFactory
+        }),
+        ReactiveFormsModule,
+        RouterModule.forRoot(routes),
+        HttpClientModule,
+    ],
+    providers: [
+        AuthGuard,
+        AuthenticationService,
+        CalendarService,
+        HttpClient,
+        StateStore,
+        UserService,
+        {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
+        {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
 
-    // provider used to create fake backend
-    mockBackendProvider
-  ],
-  bootstrap: [AppComponent]
-}) export class AppModule {}
+        // provider used to create fake backend
+        mockBackendProvider
+    ],
+    bootstrap: [AppComponent]
+})
+export class AppModule {}

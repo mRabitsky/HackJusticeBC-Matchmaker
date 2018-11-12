@@ -14,16 +14,34 @@
   z-index: -1;
 }
 
-h3 { margin: 0; }
+h3, h4, section.row { margin: 0; }
 hr { margin-bottom: 20px; }
+p.flow-text {
+  margin-top: 0;
+}
 
 .modal {
   top: 0 !important;
   position: relative !important;
+  width: 65%;
+}
+.price {
+  font-size: 1.56rem;
+  line-height: 36px;
+  float: left;
+  margin: 6px 0 6px 16px;
+  text-align: left;
 }
 .row {
-  display: flex;
   align-items: center;
+  display: flex;
+
+  :first-child {
+    padding-left: 0;
+  }
+  :last-child {
+    padding-right: 0;
+  }
 }
 .tooltipped {
   cursor: help;

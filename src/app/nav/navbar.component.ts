@@ -12,16 +12,18 @@ declare const M: any;
         <a href="#" class="brand-logo">SeekLegal</a>
         <a href="#" data-target="mobile-sidenav" class="right sidenav-trigger"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
-          <li><a href="#mission">Our Mission</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li data-target="#about"><a href="#about">About</a></li>
+          <li data-target="#how-it-works"><a href="#how-it-works">How This Works</a></li>
+          <li data-target="#mission"><a href="#mission">Our Mission</a></li>
+          <li data-target="#contact"><a href="#contact">Contact</a></li>
         </ul>
       </div>
     </nav>
     <ul class="sidenav" id="mobile-sidenav">
-      <li><a class="sidenav-close" href="#mission">Our Mission</a></li>
-      <li><a class="sidenav-close" href="#about">About</a></li>
-      <li><a class="sidenav-close" href="#contact">Contact</a></li>
+      <li data-target="#about"><a class="sidenav-close" href="#about">About</a></li>
+      <li data-target="#how-it-works"><a class="sidenav-close" href="#how-it-works">How This Works</a></li>
+      <li data-target="#mission"><a class="sidenav-close" href="#mission">Our Mission</a></li>
+      <li data-target="#contact"><a class="sidenav-close" href="#contact">Contact</a></li>
     </ul>
     `
 }) export class NavbarComponent implements AfterViewInit {

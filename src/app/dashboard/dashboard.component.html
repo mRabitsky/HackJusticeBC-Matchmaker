@@ -67,7 +67,7 @@
             </div>
         </header>
         <div *ngIf="(events$ | async) as events; else loader">
-            {{ _initTabs() }}
+            {{ _initTabs(events) }}
             <mwl-calendar-month-view id="monthView"
                                      [activeDayIsOpen]="activeDayIsOpen"
                                      [events]="events"

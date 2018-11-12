@@ -4,13 +4,16 @@ import { Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { UserService } from "../_services/user.service";
 
-@Component({templateUrl: 'registration.component.html'})
-export class RegistrationComponent implements OnInit {
+@Component({
+    styleUrls: ['registration.component.scss'],
+    templateUrl: 'registration.component.html'
+}) export class RegistrationComponent implements OnInit {
+    public get f() { return this.registerForm.controls; }
     public loading = false;
     public registerForm: FormGroup;
     public submitted = false;
 
-    constructor(private readonly formBuilder: FormBuilder, private readonly router: Router, private readonly userService: UserService) {}
+    public constructor(private readonly formBuilder: FormBuilder, private readonly router: Router, private readonly userService: UserService) {}
 
     public ngOnInit(): void {
         this.registerForm = this.formBuilder.group({
@@ -34,13 +37,8 @@ export class RegistrationComponent implements OnInit {
         this.userService.register(this.registerForm.value)
             .pipe(first())
             .subscribe(
-                data => {
-                    //this.alertService.alert('Registration successful', 'Registration was completed successfully!', ['Nice!'], true);
-                    this.router.navigate(['/login']);
-                },
-                error => {
-                    //this.alertService.alert('Error', error.toString(), ['Oops']);
-                    this.loading = false;
-                });
+                data => this.router.navigate(['/login'], {queryParamsHandling: 'preserve'}),
+                error => this.loading = false
+            );
     }
 }

@@ -9,13 +9,17 @@
             <div class="col s12 m2 img-wrapper hide-on-small-and-down">
                 <img [src]="calendarEvent.meta.lawyer.avatar" alt="Profile picture" class="circle hoverable responsive-img z-depth-2">
             </div>
-            <div class="col s12 m6 lawyerName">
-                <h3>{{calendarEvent.meta.lawyer.name}}</h3>
+            <div class="col s12 m5 lawyerName">
+                <h4>{{calendarEvent.meta.lawyer.name}}</h4>
             </div>
-            <star-rating class="col s12 m4" [ratings]="calendarEvent.meta.lawyer.ratings"></star-rating>
+            <star-rating class="col s12 m5" [ratings]="calendarEvent.meta.lawyer.ratings"></star-rating>
+        </section>
+        <section class="row">
+            <p class="col s12 m10 offset-m2 flow-text">{{calendarEvent.meta.lawyer.blurb}}</p>
         </section>
     </div>
     <div class="modal-footer">
+        <span class="price" style="float: left">{{calendarEvent?.meta.price === 0 ? 'Pro bono (free)' : ((calendarEvent?.meta.price | currency) + '/hr')}}</span>
         <button class="modal-close waves-effect waves-bc-yellow btn-flat">CLOSE</button>
         <button class="modal-close waves-effect waves-bc-yellow btn-flat" (click)="bookThisAppointment()">BOOK</button>
     </div>

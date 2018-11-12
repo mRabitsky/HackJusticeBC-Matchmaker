@@ -3,16 +3,12 @@ import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { config } from "../../config";
 import { User } from '../_models/user';
+import { StateStore } from './state-store.service';
 
 @Injectable()
 export class AuthenticationService {
-    private currentUser: User | null = null;
-
     public constructor(private readonly http: HttpClient) {}
 
-    public getCurrentUser(): User | null {
-        return this.currentUser;
-    }
     public login(username: string, password: string) {
         return this.http.post<any>(`${config.apiUrl}/users/authenticate`, {username: username, password: password})
                    .pipe(map(user => {
@@ -20,7 +16,7 @@ export class AuthenticationService {
                        if(user && user.token) {
                            // store user details and jwt token in local storage to keep user logged in between page refreshes
                            localStorage.setItem('currentUser', JSON.stringify(user));
-                           this.currentUser = user;
+                           StateStore.putState({currentUser: user});
                        }
 
                        return user;
@@ -29,6 +25,6 @@ export class AuthenticationService {
     public logout() {
         // remove user from local storage to log user out
         localStorage.removeItem('currentUser');
-        this.currentUser = null;
+        StateStore.putState({currentUser: null});
     }
 }

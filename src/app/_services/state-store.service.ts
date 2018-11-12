@@ -6,7 +6,8 @@ import { SearchCriteria } from './calendar.service';
     private static readonly state: State = {
         currentUser: null,
         loginIsNeeded: { needLogin: false },
-        searchCriteria: null
+        retryEventPopup: null,
+        searchCriteria: null,
     };
 
     public static getState<K extends keyof State>(key: K): State[K] {
@@ -20,6 +21,7 @@ import { SearchCriteria } from './calendar.service';
 export interface State {
     currentUser: User | null;
     loginIsNeeded: LoginNeededRequest; // state + message
+    retryEventPopup: number | null;
     searchCriteria: SearchCriteria;
 }
 export interface LoginNeededRequest {

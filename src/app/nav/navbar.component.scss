@@ -5,6 +5,11 @@ nav {
   color: #fff !important;
   transition: all 450ms;
 
+  a, a:active, a:focus {
+    outline: 0;
+    -moz-outline-style: none;
+  }
+
   .brand-logo, ul li a {
     color: #fff;
   }

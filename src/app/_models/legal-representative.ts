@@ -2,6 +2,7 @@ import { User } from './user';
 
 export interface LegalRepresentative extends User {
     avatar: string; // URL for the profile avatar image
+    blurb: string; // 200 chars that describe this legal representative, shown on the profile and in the appointments.
     practice: LegalPractice;
 }
 export interface LegalPractice {
