@@ -69,3 +69,7 @@ section:last-of-type {
   justify-content: center;
   margin: 4ex 0 0 0;
 }
+
+@media #{$small-and-down} {
+  main-hero { padding: 56px 0 0 0; }
+}
